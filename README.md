@@ -55,7 +55,7 @@ Acesse no navegador
 ```bash
 http://localhost:5173
 ```
-O design segue a identidade visual da LinsCrédito, com tons de azul e branco, transmitindo confiança, segurança e credibilidade — valores centrais da marca.
+O design segue a identidade visual da LinsCrédito, com tons de azul e branco, transmitindo confiança, segurança e credibilidade
 
 🧠 Desenvolvido por
 Fabio Lucas Lima Ferreira

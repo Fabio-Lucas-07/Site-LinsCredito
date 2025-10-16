@@ -32,7 +32,7 @@ Git / GitHub	Controle de versão e hospedagem do código
 
 Clone o repositório
 ```bash
-git clone https://github.com/seu-usuario/linscredito.git
+git clone https://github.com/Fabio-Lucas-07/linscredito.git
 ```
 
 Entre na pasta do projeto

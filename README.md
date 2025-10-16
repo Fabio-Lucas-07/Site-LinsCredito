@@ -26,35 +26,38 @@ React + TypeScript	Base do front-end
 Vite	Ferramenta de build rápida e leve
 TailwindCSS	Estilização moderna e responsiva
 Git / GitHub	Controle de versão e hospedagem do código
+
+
 ⚙️ Como Executar o Projeto
 
 Clone o repositório
-
+```bash
 git clone https://github.com/seu-usuario/linscredito.git
-
+```
 
 Entre na pasta do projeto
 
+```bash
 cd linscredito
-
+```
 
 Instale as dependências
-
+```bash
 npm install
-
+```
 
 Execute o servidor de desenvolvimento
-
+```bash
 npm run dev
-
+```
 
 Acesse no navegador
-
+```bash
 http://localhost:5173
-
+```
 O design segue a identidade visual da LinsCrédito, com tons de azul e branco, transmitindo confiança, segurança e credibilidade — valores centrais da marca.
 
 🧠 Desenvolvido por
-
 Fabio Lucas Lima Ferreira
+
 📅 Projeto iniciado em Outubro de 2025

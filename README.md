@@ -13,13 +13,9 @@ O projeto foi desenvolvido com foco em desempenho, design responsivo e facilidad
 🧩 Funcionalidades
 
 - *Página inicial com informações sobre a empresa*
-
 - *Seção de serviços e vantagens*
-
 - *Simulador de empréstimo consignado (em desenvolvimento)*
-
 - *Formulário de contato integrado*
-
 - *Layout totalmente responsivo*
 
 

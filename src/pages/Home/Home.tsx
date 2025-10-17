@@ -1,20 +1,17 @@
 import './style.css'
 import Logo from '../../../public/assets/logo.png'
-import Menu from '../../../public/assets/menu.png'
-import Fgts from '../../../public/assets/fgts.png'
+// import Menu from '../../../public/assets/menu.png'
+// import Fgts from '../../../public/assets/fgts.png'
 import Insta from '../../../public/assets/instaLogo.png'
 import Whats from '../../../public/assets/whatsLogo.png'
+import { Link } from 'react-router-dom'
+
 
 function Home() {
 
 
   function consulta (){
 
-  return (
-    <div className="w-400 h-400 bg-[#FFFFFF]">
-      {/* conteúdo aqui */}
-    </div>
-  );
   }
 
   return (
@@ -29,7 +26,12 @@ function Home() {
           <a href="" className="nav-itens">Serviços</a>
           <a href="" className="nav-itens">Contato</a>
         </div>
-        <button type='button' className = 'rounded-full bg-[#058605] cursor-pointer ml-auto h-9 w-30 transition duration-500 hover:bg-[#035703] ml-10 mr-10 shadow-xl/25' >Consultar</button>
+        <Link to={"/consulta"}>
+         <button type='button' className = 'rounded-full bg-[#058605] cursor-pointer ml-auto h-9 w-30 transition duration-500 hover:bg-[#035703] ml-10 mr-10 shadow-xl/25' >Simular</button>
+        </Link>
+       
+      
+        
       </div>
 
       <div className='mother flex flex-col gap-100'>
@@ -40,7 +42,7 @@ function Home() {
         </div>
         <div className='blocos'>
           <h1 className='flex flex-row justify-start text-[#FFFFFF] '><img src={Insta}/> <img src={Whats}/> <a href="src/pages/Home/Consulta/Consulta.tsx" className='text-[#FFFFFF]'>Me clique</a></h1>
-               <button onClick={consulta} className='bg-[#FFFFFF] hover:cursor-pointer'> clique me</button>
+               
         </div> 
       </div>
 

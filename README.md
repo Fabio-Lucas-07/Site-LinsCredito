@@ -2,11 +2,13 @@
 
 Site institucional desenvolvido para a LinsCrédito, uma empresa especializada em empréstimos consignados, oferecendo soluções financeiras rápidas, seguras e personalizadas para aposentados, pensionistas e servidores públicos.
 
+
 🚀 Sobre o Projeto
 
 O objetivo deste site é apresentar a LinsCrédito de forma moderna e acessível, permitindo que o cliente conheça os serviços, simule empréstimos e entre em contato diretamente com a equipe da empresa.
 
 O projeto foi desenvolvido com foco em desempenho, design responsivo e facilidade de navegação, proporcionando uma boa experiência ao usuário em qualquer dispositivo.
+
 
 🧩 Funcionalidades
 
@@ -19,6 +21,7 @@ Simulador de empréstimo consignado (em desenvolvimento)
 Formulário de contato integrado
 
 Layout totalmente responsivo
+
 
 🛠️ Tecnologias Utilizadas
 Tecnologia	Descrição

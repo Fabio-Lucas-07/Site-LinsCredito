@@ -12,23 +12,23 @@ O projeto foi desenvolvido com foco em desempenho, design responsivo e facilidad
 
 🧩 Funcionalidades
 
-Página inicial com informações sobre a empresa
+- *Página inicial com informações sobre a empresa*
 
-Seção de serviços e vantagens
+- *Seção de serviços e vantagens*
 
-Simulador de empréstimo consignado (em desenvolvimento)
+- *Simulador de empréstimo consignado (em desenvolvimento)*
 
-Formulário de contato integrado
+- *Formulário de contato integrado*
 
-Layout totalmente responsivo
+- *Layout totalmente responsivo*
 
 
 🛠️ Tecnologias Utilizadas
-Tecnologia	Descrição
-React + TypeScript	Base do front-end
-Vite	Ferramenta de build rápida e leve
-TailwindCSS	Estilização moderna e responsiva
-Git / GitHub	Controle de versão e hospedagem do código
+-Tecnologia	Descrição
+- *React + TypeScript	Base do front-end*
+- *Vite	Ferramenta de build rápida e leve*
+- *TailwindCSS	Estilização moderna e responsiva*
+- *Git / GitHub	Controle de versão e hospedagem do código*
 
 
 ⚙️ Como Executar o Projeto

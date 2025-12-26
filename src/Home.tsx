@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import './Home.css'
 import { Link } from 'react-router-dom'
 //-------------Importação de imamgens-------------
@@ -8,6 +8,7 @@ import Whats from './assets/whatsLogo.png'
 import pic1 from './assets/pic1.jpg'
 import pic2 from './assets/pic2.jpg'
 import pic3 from './assets/pic3.jpg'
+import pic4 from './assets/fgts.png'
 
 
 
@@ -23,19 +24,32 @@ const Images = [
   {
     ImgSrc: pic3,
     Title: "imagem3"
+  },
+  {
+    ImgSrc: pic4,
+    Title: "imagem4"
   }
 ];
 
 export default function Home() {
-    const [currentIndex, setCurrentIndex] = useState(0);
-    const handleRightSide = () => {
-      setCurrentIndex((prevIndex) =>(prevIndex + 1) % Images.length)
-    };
-    const handleLeftSide = () => {
-      setCurrentIndex((prevIndex) => (prevIndex - 1 + Images.length) % Images.length)
-    };
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  useEffect(() => {
+    const intervalo = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % Images.length);
+    }, 3000);
+    return () => clearInterval(intervalo);
+  }, []);
+
+  const handleRightSide = () => {
+    setCurrentIndex((prevIndex) => (prevIndex + 1) % Images.length)
+  };
+  const handleLeftSide = () => {
+    setCurrentIndex((prevIndex) => (prevIndex - 1 + Images.length) % Images.length)
+  };
+
   return (
-    
+
     <div className='body bg-[#034C8C] m-0 '>
       <div className='flex flex-row items-center text-[#FFFFFF] bg-[#013884] shadow-xl/20  w-full '>
         <img src={Logo} className='ml-10' />
@@ -48,43 +62,46 @@ export default function Home() {
       </div>
 
       <div className='mother flex flex-col '>
-       <div className='blocos1'>
-   
-    <div className='w-full h-[600px] bg-white relative group overflow-hidden'> 
-    
-        
-        <div 
-            className='w-full h-full flex transition-transform duration-500 ease-out'
-            style={{ transform: `translateX(-${currentIndex * 100}%)` }}
-        >
-            
-            {Images.map((item, index) => (
-                <div 
-                    key={index} 
-                    className='w-full h-full flex-shrink-0 bg-center bg-cover'
-                    style={{ backgroundImage: `url(${item.ImgSrc})` }}
+        <div className='blocos1'>
+
+          <div className='w-full h-[600px] bg-white relative group overflow-hidden'>
+
+
+            <div
+              className='w-full h-full flex transition-transform duration-500 ease-out'
+              style={{ transform: `translateX(-${currentIndex * 100}%)` }}
+            >
+
+              {Images.map((item, index) => (
+                <div
+                  key={index}
+                  className='w-full h-full flex-shrink-0 bg-center r'
+                  style={{
+                    backgroundImage: `url(${item.ImgSrc})`,
+                    backgroundSize: '100% 100%'
+                  }}
                 >
                 </div>
-            ))}
+              ))}
+            </div>
+
+
+            <button
+              className='bg-transparent  text-white absolute top-1/2 right-5 -translate-y-1/2  rounded-full p-2 text-4xl hover:cursor-pointer hover:bg-black/50 transition duration-150 z-10'
+              onClick={handleRightSide}
+            >
+              <i className="ri-arrow-right-circle-fill"></i>
+            </button>
+
+
+            <button
+              className='bg-transparent text-white absolute top-1/2 left-5 -translate-y-1/2 rounded-full p-2 text-4xl hover:cursor-pointer hover:bg-black/50 transition duration-150 z-10'
+              onClick={handleLeftSide}
+            >
+              <i className="ri-arrow-left-circle-fill"></i>
+            </button>
+          </div>
         </div>
-
-       
-        <button 
-            className='bg-transparent text-white absolute top-1/2 right-5 -translate-y-1/2 rounded-full p-2 text-4xl hover:cursor-pointer hover:bg-black/50 transition duration-150 z-10' 
-            onClick={handleRightSide}
-        >
-            <i className="ri-arrow-right-circle-fill"></i>
-        </button>
-
-        
-        <button 
-            className='bg-transparent text-white absolute top-1/2 left-5 -translate-y-1/2 rounded-full p-2 text-4xl hover:cursor-pointer hover:bg-black/50 transition duration-150 z-10'
-            onClick={handleLeftSide}
-        >
-            <i className="ri-arrow-left-circle-fill"></i>
-        </button>
-    </div>
-</div>
         <div className='blocos2'>
           <div className='flex flex-row justify-center gap-50 '>
             <div className='produtos '><h1>FGTS</h1>
@@ -199,19 +216,31 @@ export default function Home() {
 
           </div>
 
-          <div className='contato'>
-            {(() => {
-              const teste = "Empréstimos com as melhores taxas do mercado!";
-              var cpf = document.getElementById('cpf') as HTMLInputElement
+          <div className='contato text-white flex flex-col items-center justify-center'>
+            <div className='flex flex-col justify-start h-full w-full'>
+              {(() => {
+                const teste = "Empréstimos com as melhores taxas do mercado!";
+                var cpf = document.getElementById('cpf') as HTMLInputElement
 
-              return (
-                <h1 className='flex flex-row justify-start text-[#FFFFFF] '>
+                return (
+                  <h1 className='flex flex-row justify-start text-[#FFFFFF] '>
 
-                  <a href="https://www.instagram.com/linscreditoemprestimo/"><img src={Insta} className='hover:cursor-pointer' /></a>
+                    <a href="https://www.instagram.com/linscreditoemprestimo/"><img src={Insta} className='hover:cursor-pointer' /></a>
 
-                  <a href={`https://wa.me/5527998236211?text=Olá%20gostaria%20de%20mais%20informações%20${teste},${cpf}.`}><img src={Whats} /></a></h1>
-              );
-            })()}
+                    <a href={`https://wa.me/5527998236211?text=Olá%20gostaria%20de%20mais%20informações%20${teste},${cpf}.`}><img src={Whats} /></a></h1>
+                );
+              })()}
+
+            </div>
+
+            <div className='flex flex-col mb-0px items-center justify-center h-full w-full'>
+              <p>© 2025 LinsCrédito - Todos os direitos reservados.</p>
+              <ul>
+                <li>Contato</li>
+                <li>Sobre Nós</li>
+                <li>Politica de privacidade</li>
+              </ul>
+            </div>
 
 
           </div>

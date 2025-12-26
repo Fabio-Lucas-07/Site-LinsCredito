@@ -1,0 +1,88 @@
+@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* REMOVE SETAS DO INPUT NUMBER */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+
+
+
+.blocos1 {
+  @apply bg-[#042C4D] h-full w-full
+}
+
+.blocos2 {
+  @apply  h-full flex flex-row justify-center items-center
+}
+
+.nav-itens{
+  @apply border-transparent hover:border-b-2 hover:border-white transition;
+}
+ 
+.produtos{
+  @apply flex flex-col h-auto w-80 bg-[#042C4D] rounded-xl shadow-xl/20 justify-items-center p-4 text-white hover:shadow-xl/40  cursor-pointer transition delay-1 duration-150 hover:scale-130 mt-50 mb-50;
+}           
+
+.produtos p{
+  @apply flex justify-center items-center text-sm m-2
+}
+
+.produtos h1{
+  @apply flex justify-center items-center font-bold mb-4
+}
+.box-input{
+  @apply w-100 h-10 border border-gray-300 rounded-md
+}
+
+.titulos{
+  @apply text-base font-semibold  text-[#042C4D]
+}
+
+.tipo{
+  @apply  h-full w-full hover:cursor-pointer absolute  opacity-0
+  
+}
+
+
+
+  
+.input-container {
+  @apply h-10 w-25 bg-white items-center justify-center rounded-md border-2 border-gray-300 relative hover:bg-gray-300
+  
+  transition
+  duration-300
+  has-[:checked]:border-[#042C4D]
+  has-[:checked]:bg-[#042C4D] 
+
+
+}
+
+
+
+.input-container label {
+  @apply flex items-center justify-center
+         w-full h-full
+         text-black  
+         text-sm
+         transition
+         duration-300
+         peer-[:checked]:text-white
+}
+
+
+
+.contato {
+  @apply bg-[#022038] h-100 w-full
+}
+
+

@@ -5,17 +5,21 @@ import { Link } from 'react-router-dom'
 import Logo from './assets/logo.png'
 import Insta from './assets/instaLogo.png'
 import Whats from './assets/whatsLogo.png'
-import pic1 from './assets/pic1.jpg'
+import pic1 from './assets/pic1.png'
 import pic2 from './assets/pic2.jpg'
 import pic3 from './assets/pic3.jpg'
 import pic4 from './assets/fgts.png'
+import type { describe } from 'node:test'
 
 
 
 const Images = [
   {
     ImgSrc: pic1,
-    Title: "imagem1"
+    Title: "imagem1",
+    text:`O FGTS (Fundo de Garantia do Tempo de Serviço) não é apenas um direito trabalhista; é o seu patrimônio crescendo mês a mês. Depositado pela empresa, esse valor funciona como uma reserva de segurança para momentos importantes — como a compra da casa própria, uma aposentadoria mais tranquila ou aquele imprevisto que ninguém planeja.
+                Mas aqui está o segredo: você não precisa esperar anos para ver esse dinheiro. Hoje, existem formas inteligentes de antecipar esses valores e realizar seus projetos agora.
+                Quer descobrir quanto você tem disponível e como usar isso a seu favor? Vamos conversar!`
   },
   {
     ImgSrc: pic2,
@@ -34,12 +38,12 @@ const Images = [
 export default function Home() {
   const [currentIndex, setCurrentIndex] = useState(0);
 
-  useEffect(() => {
-    const intervalo = setInterval(() => {
-      setCurrentIndex((prev) => (prev + 1) % Images.length);
-    }, 3000);
-    return () => clearInterval(intervalo);
-  }, []);
+  // useEffect(() => {
+  //   const intervalo = setInterval(() => {
+  //     setCurrentIndex((prev) => (prev + 1) % Images.length);
+  //   }, 3000);
+  //   return () => clearInterval(intervalo);
+  // }, []);
 
   const handleRightSide = () => {
     setCurrentIndex((prevIndex) => (prevIndex + 1) % Images.length)
@@ -75,14 +79,16 @@ export default function Home() {
               {Images.map((item, index) => (
                 <div
                   key={index}
-                  className='w-full h-full flex-shrink-0 bg-center r'
+                  className='w-full h-full flex-shrink-0 bg-center'
                   style={{
                     backgroundImage: `url(${item.ImgSrc})`,
-                    backgroundSize: '100% 100%'
+                    backgroundSize: '100%1 100%'
                   }}
-                >
+                ><div className='flex w-full h-full justify-end  items-center left-10 text-white '>
+                  <div className=' w-1/3 m-25 bg-black/50 p-8 rounded-2xl '><h1 className=''>{item.text}</h1></div>
                 </div>
-              ))}
+                </div>
+              ))}z
             </div>
 
 
@@ -120,7 +126,7 @@ export default function Home() {
           </div>
 
         </div>
-
+        <div className='flex w-full h-150 justify-center items-center '>Espaco reservado</div>
         <div className='blocos1'>
           <div className='flex flex-col justify-center items-center h-auto w-full gap-20 mt-20 mb-20 '>
 
@@ -128,7 +134,7 @@ export default function Home() {
               <div>
                 <h1 className='font-bold text-5xl text-[#042C4D]'>Simulação </h1>
               </div>
-              <div className=' flex flex-col gap-2'>
+              <div className=' flex flex-col gap-3'>
                 <label className='titulos'>CPF</label>
                 <input className='box-input' id="cpf" type="number" />
 
@@ -208,7 +214,9 @@ export default function Home() {
 
 
                 </div>
-                <button type='button' className='rounded-xl bg-[#058605] text-white cursor-pointer h-15 w-100 transition duration-500 hover:bg-[#035703] shadow-xl/15' >Simular</button>
+                <button type='button' className='rounded-xl bg-[#058605] text-white cursor-pointer h-15 w-100 
+                transition duration-500 hover:bg-[#035703] shadow-xl/15' >
+                Simular</button>
 
 
               </div>
@@ -217,7 +225,7 @@ export default function Home() {
           </div>
 
           <div className='contato text-white flex flex-col items-center justify-center'>
-            <div className='flex flex-col justify-start h-full w-full'>
+            <div className='flex flex-col justify-start h-full w-full p-10'>
               {(() => {
                 const teste = "Empréstimos com as melhores taxas do mercado!";
                 var cpf = document.getElementById('cpf') as HTMLInputElement
@@ -230,17 +238,29 @@ export default function Home() {
                     <a href={`https://wa.me/5527998236211?text=Olá%20gostaria%20de%20mais%20informações%20${teste},${cpf}.`}><img src={Whats} /></a></h1>
                 );
               })()}
+              <div className='flex flex-row mb-0px items-center justify-start h-full w-full'>
+                <div className='flex flex-col  w-full h-full items-start justify-start p-10'>
+                  <ul>
+                    <li>Contato</li>
+                    <li>Sobre Nós</li>
+                    <li>Politica de privacidade</li>
+                  </ul>
+                </div>
+                <div className='flex flex-col justify-end h-full w-full mb-0px  bottom-0 left-0  p-4 text-white'>
+                      <p className=''>© 2025 LinsCrédito - Todos os direitos reservados.</p>
+                      
+                </div>
+                <div className='flex-col items-end  bottom-0 h-full w-full'>
+                  <h1 className='text-white text-4xl font-extrabold mb-2'>Fale Conosco</h1>
+                  <p className='flex mb-10'>Nos envie uma mensagem em nosso número de telefone, entraremos em contato o mais rápido possível!</p>
+                  <p className='text-white text-4xl font-extrabold mb-2'>(27)99823-6211</p>
+                </div>
+
+              </div>
 
             </div>
 
-            <div className='flex flex-col mb-0px items-center justify-center h-full w-full'>
-              <p>© 2025 LinsCrédito - Todos os direitos reservados.</p>
-              <ul>
-                <li>Contato</li>
-                <li>Sobre Nós</li>
-                <li>Politica de privacidade</li>
-              </ul>
-            </div>
+
 
 
           </div>

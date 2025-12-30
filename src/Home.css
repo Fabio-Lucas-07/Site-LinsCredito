@@ -30,7 +30,7 @@ input[type="number"] {
 }
  
 .produtos{
-  @apply flex flex-col h-auto w-80 bg-[#042C4D] rounded-xl shadow-xl/20 justify-items-center p-4 text-white hover:shadow-xl/40  cursor-pointer transition delay-1 duration-150 hover:scale-130 mt-50 mb-50;
+  @apply flex flex-col h-auto w-100 bg-[#042C4D] rounded-xl shadow-xl/20 justify-items-center p-4 text-white hover:shadow-xl/40  cursor-pointer transition delay-1 duration-150 hover:scale-130 mt-50 mb-50;
 }           
 
 .produtos p{

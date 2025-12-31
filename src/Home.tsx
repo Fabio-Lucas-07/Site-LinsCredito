@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from 'react'
 import './Home.css'
 import { Link } from 'react-router-dom'
+//-------------Imporatação Nav-bar----------------
+import Navbar from './components/navbar.tsx'
+
 //-------------Importação de imamgens-------------
-import Logo from './assets/logo.png'
+
 import Insta from './assets/instaLogo.png'
 import Whats from './assets/whatsLogo.png'
 import pic1 from './assets/pic1.png'
@@ -17,9 +20,12 @@ const Images = [
   {
     ImgSrc: pic1,
     Title: "imagem1",
-    text:`O FGTS (Fundo de Garantia do Tempo de Serviço) não é apenas um direito trabalhista; é o seu patrimônio crescendo mês a mês. Depositado pela empresa, esse valor funciona como uma reserva de segurança para momentos importantes — como a compra da casa própria, uma aposentadoria mais tranquila ou aquele imprevisto que ninguém planeja.
-                Mas aqui está o segredo: você não precisa esperar anos para ver esse dinheiro. Hoje, existem formas inteligentes de antecipar esses valores e realizar seus projetos agora.
-                Quer descobrir quanto você tem disponível e como usar isso a seu favor? Vamos conversar!`
+    text: `O FGTS (Fundo de Garantia do Tempo de Serviço) não é apenas um direito trabalhista; 
+    é o seu patrimônio crescendo mês a mês. Depositado pela empresa, esse valor funciona como uma reserva 
+    de segurança para momentos importantes — como a compra da casa própria, uma aposentadoria mais tranquila 
+    ou aquele imprevisto que ninguém planeja.Mas aqui está o segredo: você não precisa esperar anos para ver 
+    esse dinheiro. Hoje, existem formas inteligentes de antecipar esses valores e realizar seus projetos agora.
+    Quer descobrir quanto você tem disponível e como usar isso a seu favor? Vamos conversar!`
   },
   {
     ImgSrc: pic2,
@@ -55,16 +61,9 @@ export default function Home() {
   return (
 
     <div className='body bg-[#034C8C] m-0 '>
-      <div className='flex flex-row items-center text-[#FFFFFF] bg-[#013884] shadow-xl/20  w-full '>
-        <img src={Logo} className='ml-10' />
-        <ul className='flex flex-row w-full gap-10 justify-center items-center absolute'>
-          <li><a href="" className="nav-itens ">Quem Somos</a></li>
-          <li><a href="" className="nav-itens">Produtos</a></li>
-          <li><a href="" className="nav-itens">Serviços</a></li>
-          <li><a href="" className="nav-itens">Contato</a></li>
-        </ul>
-      </div>
-
+     <div >
+      <Navbar />
+     </div>
       <div className='mother flex flex-col '>
         <div className='blocos1'>
 
@@ -85,8 +84,8 @@ export default function Home() {
                     backgroundSize: '100% 100%'
                   }}
                 ><div className='flex w-full h-full justify-end  items-center left-10 text-white '>
-                  <div className=' w-1/3 m-25 bg-black/50 p-8 rounded-2xl '><h1 className=''>{item.text}</h1></div>
-                </div>
+                    <div className=' w-1/3 m-25 bg-black/50 p-8 rounded-2xl '><h1 className=''>{item.text}</h1></div>
+                  </div>
                 </div>
               ))}z
             </div>
@@ -216,7 +215,7 @@ export default function Home() {
                 </div>
                 <button type='button' className='rounded-xl bg-[#058605] text-white cursor-pointer h-15 w-100 
                 transition duration-500 hover:bg-[#035703] shadow-xl/15' >
-                Simular</button>
+                  Simular</button>
 
 
               </div>
@@ -247,8 +246,8 @@ export default function Home() {
                   </ul>
                 </div>
                 <div className='flex flex-col justify-end h-full w-full mb-0px  bottom-0 left-0  p-4 text-white'>
-                      <p className=''>© 2025 LinsCrédito - Todos os direitos reservados.</p>
-                      
+                  <p className=''>© 2025 LinsCrédito - Todos os direitos reservados.</p>
+
                 </div>
                 <div className='flex-col items-end  bottom-0 h-full w-full'>
                   <h1 className='text-white text-4xl font-extrabold mb-2'>Fale Conosco</h1>

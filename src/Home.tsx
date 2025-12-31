@@ -38,12 +38,12 @@ const Images = [
 export default function Home() {
   const [currentIndex, setCurrentIndex] = useState(0);
 
-  // useEffect(() => {
-  //   const intervalo = setInterval(() => {
-  //     setCurrentIndex((prev) => (prev + 1) % Images.length);
-  //   }, 3000);
-  //   return () => clearInterval(intervalo);
-  // }, []);
+  useEffect(() => {
+    const intervalo = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % Images.length);
+    }, 3000);
+    return () => clearInterval(intervalo);
+  }, []);
 
   const handleRightSide = () => {
     setCurrentIndex((prevIndex) => (prevIndex + 1) % Images.length)
@@ -82,7 +82,7 @@ export default function Home() {
                   className='w-full h-full flex-shrink-0 bg-center'
                   style={{
                     backgroundImage: `url(${item.ImgSrc})`,
-                    backgroundSize: '100%1 100%'
+                    backgroundSize: '100% 100%'
                   }}
                 ><div className='flex w-full h-full justify-end  items-center left-10 text-white '>
                   <div className=' w-1/3 m-25 bg-black/50 p-8 rounded-2xl '><h1 className=''>{item.text}</h1></div>

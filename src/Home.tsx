@@ -30,7 +30,7 @@ const Images = [
   {
     ImgSrc: pic2,
     Title: "imagem2"
-  },
+    },
   {
     ImgSrc: pic3,
     Title: "imagem3"
@@ -43,6 +43,9 @@ const Images = [
 
 export default function Home() {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [cpf, setCpf] = useState("");
+  const [valor, setvalor] = useState(0);
+  const [vezes, seVezes] = useState(0);
 
   useEffect(() => {
     const intervalo = setInterval(() => {
@@ -51,12 +54,19 @@ export default function Home() {
     return () => clearInterval(intervalo);
   }, []);
 
+  const handleCpf = (event) => {
+    setCpf(event.target.value);
+  }
   const handleRightSide = () => {
     setCurrentIndex((prevIndex) => (prevIndex + 1) % Images.length)
   };
   const handleLeftSide = () => {
     setCurrentIndex((prevIndex) => (prevIndex - 1 + Images.length) % Images.length)
   };
+
+
+
+  
 
   return (
 
@@ -134,8 +144,10 @@ export default function Home() {
                 <h1 className='font-bold text-5xl text-[#042C4D]'>Simulação </h1>
               </div>
               <div className=' flex flex-col gap-3'>
-                <label className='titulos'>CPF</label>
-                <input className='box-input' id="cpf" type="number" />
+                <label className='titulos'
+              >CPF</label>
+                <input className='box-input' id="cpf" type="text"
+                  onChange={handleCpf}   />
 
                 <label className='titulos'>Idade</label>
                 <input className='box-input' type="number" />
@@ -215,6 +227,7 @@ export default function Home() {
                 </div>
                 <button type='button' className='rounded-xl bg-[#058605] text-white cursor-pointer h-15 w-100 
                 transition duration-500 hover:bg-[#035703] shadow-xl/15' >
+
                   Simular</button>
 
 
@@ -225,18 +238,7 @@ export default function Home() {
 
           <div className='contato text-white flex flex-col items-center justify-center'>
             <div className='flex flex-col justify-start h-full w-full p-10'>
-              {(() => {
-                const teste = "Empréstimos com as melhores taxas do mercado!";
-                var cpf = document.getElementById('cpf') as HTMLInputElement
-
-                return (
-                  <h1 className='flex flex-row justify-start text-[#FFFFFF] '>
-
-                    <a href="https://www.instagram.com/linscreditoemprestimo/"><img src={Insta} className='hover:cursor-pointer' /></a>
-
-                    <a href={`https://wa.me/5527998236211?text=Olá%20gostaria%20de%20mais%20informações%20${teste},${cpf}.`}><img src={Whats} /></a></h1>
-                );
-              })()}
+                q
               <div className='flex flex-row mb-0px items-center justify-start h-full w-full'>
                 <div className='flex flex-col  w-full h-full items-start justify-start p-10'>
                   <ul>
@@ -246,6 +248,9 @@ export default function Home() {
                   </ul>
                 </div>
                 <div className='flex flex-col justify-end h-full w-full mb-0px  bottom-0 left-0  p-4 text-white'>
+                  <p>{cpf}</p>
+                  {/* <p>{idade}</p>
+                  <p>{vezes}</p> */}
                   <p className=''>© 2025 LinsCrédito - Todos os direitos reservados.</p>
 
                 </div>

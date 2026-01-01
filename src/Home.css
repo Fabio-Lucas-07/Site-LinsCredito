@@ -26,7 +26,7 @@ input[type="number"] {
 }
 
 .nav-itens{
-  @apply border-transparent hover:border-b-2 hover:border-white transition;
+  @apply  hover:bg-black/10 p-2 rounded-xl hover:border-white transition;
 }
  
 .produtos{

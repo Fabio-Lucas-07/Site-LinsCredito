@@ -47,12 +47,12 @@ export default function Home() {
   const [valor, setvalor] = useState(0);
   const [vezes, seVezes] = useState(0);
 
-  useEffect(() => {
-    const intervalo = setInterval(() => {
-      setCurrentIndex((prev) => (prev + 1) % Images.length);
-    }, 3000);
-    return () => clearInterval(intervalo);
-  }, []);
+  // useEffect(() => {
+  //   const intervalo = setInterval(() => {
+  //     setCurrentIndex((prev) => (prev + 1) % Images.length);
+  //   }, 3000);
+  //   return () => clearInterval(intervalo);
+  // }, []);
 
   const handleCpf = (event) => {
     setCpf(event.target.value);
@@ -94,7 +94,8 @@ export default function Home() {
                     backgroundSize: '100% 100%'
                   }}
                 ><div className='flex w-full h-full justify-end  items-center left-10 text-white '>
-                    <div className=' w-1/3 m-25 bg-black/50 p-8 rounded-2xl '><h1 className=''>{item.text}</h1></div>
+                    <div className=' w-1/3 m-25 bg-black/50 p-8 rounded-2xl max-md:h-115 max-md:w-60
+                     max-md:text-xs '><h1 className=''>{item.text}</h1></div>
                   </div>
                 </div>
               ))}z
@@ -102,7 +103,8 @@ export default function Home() {
 
 
             <button
-              className='bg-transparent  text-white absolute top-1/2 right-5 -translate-y-1/2  rounded-full p-2 text-4xl hover:cursor-pointer hover:bg-black/50 transition duration-150 z-10'
+              className='bg-transparent  text-white absolute top-1/2 right-5 -translate-y-1/2  
+              rounded-full p-2 text-4xl hover:cursor-pointer hover:bg-black/50 transition duration-150 z-10'
               onClick={handleRightSide}
             >
               <i className="ri-arrow-right-circle-fill"></i>
@@ -118,19 +120,34 @@ export default function Home() {
           </div>
         </div>
         <div className='blocos2'>
-          <div className='flex flex-row justify-center gap-50 '>
+          <div className='flex flex-row justify-center gap-30 ml-45 mr-45 max-sm:flex-col max-md:flex-col'>
             <div className='produtos '><h1>FGTS</h1>
-              <p>O FGTS (Fundo de Garantia do Tempo de Serviço) não é apenas um direito trabalhista; é o seu patrimônio crescendo mês a mês. Depositado pela empresa, esse valor funciona como uma reserva de segurança para momentos importantes — como a compra da casa própria, uma aposentadoria mais tranquila ou aquele imprevisto que ninguém planeja.
-
-                Mas aqui está o segredo: você não precisa esperar anos para ver esse dinheiro. Hoje, existem formas inteligentes de antecipar esses valores e realizar seus projetos agora.
-
+              <p>O FGTS (Fundo de Garantia do Tempo de Serviço) não é apenas um direito trabalhista;
+                é o seu patrimônio crescendo mês a mês. Depositado pela empresa, esse valor funciona
+                como uma reserva de segurança para momentos importantes — como a compra da casa própria,
+                uma aposentadoria mais tranquila ou aquele imprevisto que ninguém planeja.
+                Mas aqui está o segredo: você não precisa esperar anos para ver esse dinheiro.Hoje,
+                existem formas inteligentes de antecipar esses valores e realizar seus projetos agora.
                 Quer descobrir quanto você tem disponível e como usar isso a seu favor? Vamos conversar!</p></div>
             <div className='produtos'>
               <h1>Emprestimo Consignado</h1>
-              <p>O Empréstimo Consignado é a solução ideal para quem busca as taxas de juros mais baixas do mercado e total conveniência. Por ser descontado diretamente na folha de pagamento, ele oferece uma segurança maior tanto para quem empresta quanto para quem recebe, garantindo prazos mais longos e parcelas que cabem no seu bolso sem sobressaltos. É a oportunidade perfeita para organizar sua vida financeira, quitar dívidas caras ou realizar aquele projeto antigo com a tranquilidade de saber exatamente quanto vai pagar. Sem burocracia excessiva e com liberação rápida, o crédito consignado transforma sua estabilidade profissional em uma ferramenta para conquistar seus objetivos agora. Quer saber qual o limite disponível para você? Vamos conversar!</p>
+              <p>O Empréstimo Consignado é a solução ideal para quem busca as taxas de juros mais baixas do mercado e
+                 total conveniência. Por ser descontado diretamente na folha de pagamento, ele oferece uma segurança maior
+                  tanto para quem empresta quanto para quem recebe, garantindo prazos mais longos e parcelas que cabem no 
+                  seu bolso sem sobressaltos. É a oportunidade perfeita para organizar sua vida financeira, quitar dívidas
+                   caras ou realizar aquele projeto antigo com a tranquilidade de saber exatamente quanto vai pagar. 
+                   Sem burocracia excessiva e com liberação rápida, o crédito consignado transforma sua estabilidade 
+                   profissional em uma ferramenta para conquistar seus objetivos agora. Quer saber qual o limite disponível
+                    para você? Vamos conversar!</p>
             </div>
             <div className='produtos'><h1>Emprestimo Pessoal</h1>
-              <p>O Empréstimo Pessoal é a alternativa rápida e flexível para quando a vida exige agilidade. Diferente de outras modalidades, ele não requer garantias complexas ou uma finalidade específica: o crédito é seu para usar como preferir, seja para uma emergência, uma viagem inesperada ou para aproveitar uma oportunidade única de negócio. Com processos de aprovação cada vez mais dinâmicos e digitais, você ganha o fôlego financeiro necessário com a liberdade de escolher o plano de parcelamento que melhor se adapta ao seu planejamento mensal. É o dinheiro na mão com a transparência que você merece para retomar o controle das suas finanças ou dar o próximo passo nos seus planos. Precisa de crédito rápido e sem complicações? Vamos conversar!</p>
+              <p>O Empréstimo Pessoal é a alternativa rápida e flexível para quando a vida exige agilidade. Diferente de outras
+                 modalidades, ele não requer garantias complexas ou uma finalidade específica: o crédito é seu para usar como 
+                 preferir, seja para uma emergência, uma viagem inesperada ou para aproveitar uma oportunidade única de negócio.
+                  Com processos de aprovação cada vez mais dinâmicos e digitais, você ganha o fôlego financeiro necessário com a
+                   liberdade de escolher o plano de parcelamento que melhor se adapta ao seu planejamento mensal. É o dinheiro na
+                    mão com a transparência que você merece para retomar o controle das suas finanças ou dar o próximo passo nos 
+                    seus planos. Precisa de crédito rápido e sem complicações? Vamos conversar!</p>
             </div>
           </div>
 

@@ -3,7 +3,7 @@
 @tailwind components;
 @tailwind utilities;
 
-/* REMOVE SETAS DO INPUT NUMBER */
+
 input[type="number"]::-webkit-inner-spin-button,
 input[type="number"]::-webkit-outer-spin-button {
   -webkit-appearance: none;
@@ -17,26 +17,19 @@ input[type="number"] {
 
 
 
-.blocos1 {
-  @apply bg-[#042C4D] h-full w-full
-}
-
-.blocos2 {
-  @apply  h-full flex flex-row justify-center items-center
-}
 
 .nav-itens{
   @apply  hover:bg-black/10 p-2 rounded-xl hover:border-white transition;
 }
  
 .produtos{
-  @apply flex flex-col h-auto w-100 bg-[#042C4D] rounded-xl shadow-xl/20 
-  justify-items-center p-4 text-white hover:shadow-xl/40  cursor-pointer 
-  transition delay-1 duration-150 hover:scale-130 mt-50 mb-50 w-16 md:w-130  lg:w-110;
+  @apply flex flex-col h-100 w-80   bg-blue-900 rounded-xl shadow-xl/20 
+  justify-center items-center  text-white text-xl hover:shadow-xl/40  cursor-pointer 
+  transition delay-1 duration-150 hover:scale-110 w-16 
 }           
 
 .produtos p{
-  @apply flex justify-center items-center text-sm m-2
+  @apply flex justify-center items-center text-sm m-2 p-4
 }
 
 .produtos h1{

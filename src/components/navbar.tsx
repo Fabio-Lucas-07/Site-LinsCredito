@@ -38,9 +38,9 @@ function Navbar() {
         {/* Usamos 'mx-auto' para centralizar, mas ele só aparece no Desktop */}
         <div className='hidden w-full md:flex md:items-center md:justify-center'>
           <ul className='flex flex-row gap-10 text-white'>
-            <li><a href="#" className="nav-itens">Quem Somos</a></li>
             <li><a href="#" className="nav-itens">Produtos</a></li>
-            <li><a href="#" className="nav-itens">Serviços</a></li>
+            <li><a href="#" className="nav-itens">Sobre</a></li>
+            <li><a href="#" className="nav-itens">Simulação</a></li>
             <li><a href="#" className="nav-itens">Contato</a></li>
           </ul>
         </div>

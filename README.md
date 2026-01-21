@@ -1,73 +1,41 @@
-# React + TypeScript + Vite
+# 🚀 LinsCrédito - Soluções Financeiras
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A **LinsCrédito** é uma plataforma digital desenvolvida para facilitar o acesso ao crédito para aposentados, pensionistas e servidores públicos. O projeto foca em uma experiência de usuário fluida, permitindo simulações rápidas de Empréstimo Consignado, Antecipação de FGTS e Crédito Pessoal com integração direta ao WhatsApp.
 
-Currently, two official plugins are available:
+## 🛠️ Tecnologias Utilizadas
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+* **React** (v18+) - Biblioteca principal para a interface.
+* **TypeScript** - Garantia de tipagem e segurança no código.
+* **Tailwind CSS** - Estilização moderna, responsiva e de alta performance.
+* **Node.js** - Ambiente de execução para a API de backend.
+* **SQL Server** - Banco de dados para armazenamento de contas e usuários.
+* **React Router Dom** - Navegação entre páginas.
+* **Remix Icons** - Biblioteca de ícones vetoriais.
 
-## React Compiler
+## ✨ Funcionalidades Principais
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+* **Carrossel de Destaques:** Apresentação dinâmica dos principais serviços financeiros.
+* **Simulador Inteligente:** Cálculo em tempo real baseado no valor do benefício e número de parcelas escolhidas.
+* **Integração com WhatsApp:** Geração automática de mensagens personalizadas para agilizar o atendimento.
+* **Layout Responsivo:** Totalmente adaptado para dispositivos móveis e desktops.
+* **API de Backend:** Integração com banco de dados relacional para consulta de contas.
 
-## Expanding the ESLint configuration
+## 📊 Regras de Negócio do Simulador
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+O sistema aplica coeficientes específicos para calcular o valor liberado conforme o parcelamento:
+* **96 parcelas:** Coeficiente de `0.02370`
+* **48 parcelas:** Coeficiente de `0.03330`
+* **Outras parcelas:** Coeficiente de `0.0405`
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## 🚀 Como rodar o projeto localmente
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+### Front-end
+1. **Instale as dependências:** `npm install`
+2. **Inicie o servidor:** `npm run dev`
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+---
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+### 📝 Licença
+© 2025 LinsCrédito - Transformando sonhos em realidade.

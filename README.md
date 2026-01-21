@@ -1,15 +1,12 @@
 # 🚀 LinsCrédito - Soluções Financeiras
 
-A **LinsCrédito** é uma plataforma digital desenvolvida para facilitar o acesso ao crédito para aposentados, pensionistas e servidores públicos. O projeto foca em uma experiência de usuário fluida, permitindo simulações rápidas de Empréstimo Consignado, Antecipação de FGTS e Crédito Pessoal com integração direta ao WhatsApp.
+A **LinsCrédito** é uma empresa que atua como correspondente bancária. Com o intuito de aprimorar minhas habilidades como desenvolvedor web, resolvi criar uma página para a empresa, a fim de aumentar sua visibilidade e a agilidade no atendimento. No projeto, busquei seguir uma estética moderna e minimalista, alinhada às cores da logomarca. O diferencial é o 'Simulador', que tem como objetivo atrair clientes e agilizar processos. O ideal seria a integração com uma API do INSS para verificação de saldo via CPF; porém, por enquanto, utilizei um método mais simplificado, com cálculos que aproximam o valor do empréstimo para beneficiários com margem 'limpa'.
 
 ## 🛠️ Tecnologias Utilizadas
 
 * **React** (v18+) - Biblioteca principal para a interface.
 * **TypeScript** - Garantia de tipagem e segurança no código.
 * **Tailwind CSS** - Estilização moderna, responsiva e de alta performance.
-* **Node.js** - Ambiente de execução para a API de backend.
-* **SQL Server** - Banco de dados para armazenamento de contas e usuários.
-* **React Router Dom** - Navegação entre páginas.
 * **Remix Icons** - Biblioteca de ícones vetoriais.
 
 ## ✨ Funcionalidades Principais
@@ -18,7 +15,6 @@ A **LinsCrédito** é uma plataforma digital desenvolvida para facilitar o acess
 * **Simulador Inteligente:** Cálculo em tempo real baseado no valor do benefício e número de parcelas escolhidas.
 * **Integração com WhatsApp:** Geração automática de mensagens personalizadas para agilizar o atendimento.
 * **Layout Responsivo:** Totalmente adaptado para dispositivos móveis e desktops.
-* **API de Backend:** Integração com banco de dados relacional para consulta de contas.
 
 ## 📊 Regras de Negócio do Simulador
 

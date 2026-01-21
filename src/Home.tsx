@@ -26,15 +26,15 @@ export default function Home() {
   const [vezes, setVezes] = useState("");
   const [idade, setIdade] = useState(0);
   const [tipo, setTipo] = useState("")
-  const [beneficio, setBeneficio] = useState("");
+  const [beneficio, setBeneficio] = useState(0);
   const [simulador, setSimulador] = useState(0);
 
-  const simulacao = (beneficio:number, vezes:number ) => {
-    if ( vezes == 96) {
+  const simulacao = (beneficio:number, vezes:string ) => {
+    if ( vezes == "96x") {
       setSimulador( beneficio * 0.35 / 0.02370)
-    }else if (vezes == 48) {
+    }else if (vezes == "48x" ) {
       setSimulador (beneficio * 0.35 / 0.03330)
-    } else if(vezes) {
+    } else if(vezes == "36x") {
       setSimulador (beneficio * 0.35 / 0.0405)
     }
   }
@@ -110,7 +110,7 @@ export default function Home() {
             <div className='w-24 h-1 bg-green-500 mx-auto rounded-full'></div>
           </div>
 
-          <div className='grid grid-cols- md:grid-cols-3 gap-15 lg:gap-14'>
+          <div className='grid md:grid-cols-3 gap-15 lg:gap-14'>
             <div className='group relative bg-[#063b66] rounded-3xl p-8 pt-12 hover:-translate-y-2 transition-all duration-300 shadow-xl hover:shadow-green-500/20 border border-white/5'>
               <div className='absolute -top-10 left-1/2 -translate-x-1/2 w-20 h-20 bg-green-600 rounded-full flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform'>
                 <i className="ri-cash-line text-4xl text-white"></i>
@@ -196,7 +196,7 @@ export default function Home() {
       </div>
 
       <div id='simulacao' className='py-20 px-5 bg-gradient-to-b from-[#02182b] to-[#02182b] relative overflow-hidden'>
-        <div className='relative max-w-4xl mx-auto bg-white/95 backdrop-blur-xl rounded-3xl shadow-2xl overflow-hidden flex flex-col md:flex-row'>
+        <div className='relative max-w-4xl mx-auto bg-white/95 rounded-3xl shadow-2xl overflow-hidden flex flex-col md:flex-row'>
           
           <div className='hidden md:flex md:w-1/3 bg-gradient-to-br from-green-600 to-green-800 p-8 flex-col justify-between text-white'>
              <div>
@@ -220,7 +220,7 @@ export default function Home() {
                         type="text" 
                         placeholder="000.000.000-00"
                         maxLength={14}
-                        onChange={(e) => setCpf(e.target.value)}
+                        onChange={(a) => setCpf(a.target.value)}
     
                     />
                 </div>
@@ -242,25 +242,25 @@ export default function Home() {
                         className='w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent outline-none transition-all'
                         type="number"
                         placeholder="Ex : 1620,00"
-                        onChange={(e) => setBeneficio(e.target.value)} 
+                        onChange={(b) => setBeneficio(b.target.value)} 
                     />
                 </div>
 
             <div className='flex flex-col gap-2 mt-6'>
                 <label className='font-semibold text-gray-700 text-sm'>Quantas parcelas?</label>
                 <div className='flex gap-2 items-center justify-center'>
-                   {["36x", "48x", "96x"].map((teste) => (
+                   {["36x", "48x", "96x"].map((botao) => (
                     <button 
-                    key={teste}
+                    key={botao}
                     className={`border-1 rounded-full w-12 h-12 items-center flex justify-center font-bold hover:cursor-pointer
-                    ${vezes === teste 
+                    ${vezes === botao 
                     ? 'bg-[#042C4D] text-white border-[#042C4D] scale-110' 
                     : 'bg-gray-50 text-gray-500 border-gray-200 hover:border-blue-300' }
                       `}
 
-                      onClick={() =>setVezes(teste)}>
+                      onClick={() =>setVezes(botao)}>
 
-                     {teste}
+                     {botao}
                     </button>))}
                 </div>
             </div>

@@ -9,11 +9,10 @@ function Navbar() {
   return (
     <nav className='sticky top-0 z-50 w-full bg-[#063b66] shadow-xl/20'>
 
-      {/* Container Principal */}
+      
       <div className='relative flex h-16 w-full items-center justify-between px-4 sm:px-6 lg:px-8'>
 
-        {/* 1. LOGO */}
-        {/* Mobile: Fica no fluxo normal. Desktop: Fica absoluto na esquerda */}
+        
         <div className='flex items-center md:absolute md:left-10'>
           <a href="#inicio">
             <img src={Logo} alt="Logo" className=' w-auto' />
@@ -21,13 +20,13 @@ function Navbar() {
 
         </div>
 
-        {/* 2. BOTÃO HAMBÚRGUER (Só aparece no Mobile) */}
+       
         <div className='flex md:hidden'>
           <button
             onClick={() => setIsOpen(!isOpen)}
             className='text-white hover:text-gray-300 focus:outline-none'
           >
-            {/* Ícone de Menu / X */}
+           
             {isOpen ? (
               <i className="ri-close-line text-2xl"></i>
             ) : (
@@ -36,8 +35,7 @@ function Navbar() {
           </button>
         </div>
 
-        {/* 3. MENU DE LINKS (Desktop) */}
-        {/* Usamos 'mx-auto' para centralizar, mas ele só aparece no Desktop */}
+      
         <div className='hidden w-full md:flex md:items-center md:justify-center '>
           <ul className='flex flex-row gap-10 text-white'>
             <li><a href="#produtos" className="nav-itens ">Produtos</a></li>
@@ -49,8 +47,6 @@ function Navbar() {
 
       </div>
 
-      {/* 4. MENU MOBILE (A lista que abre ao clicar) */}
-      {/* Fica fora do flex principal para cair para a linha de baixo */}
       {isOpen && (
         <div className='md:hidden bg-[#063b66] px-2 pt-2 pb-3 space-y-1'>
           <a href="#produtos" className="block px-3 py-2 rounded-md text-base font-medium text-white hover:bg-blue-800">Produtos</a>

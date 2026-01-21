@@ -33,9 +33,7 @@ O sistema aplica coeficientes específicos para calcular o valor liberado confor
 1. **Instale as dependências:** `npm install`
 2. **Inicie o servidor:** `npm run dev`
 
-### Back-end (API)
-1. **Configure o arquivo `.env`** com suas credenciais do SQL Server.
-2. **Inicie a API:** `node server.js`
+
 
 ---
 

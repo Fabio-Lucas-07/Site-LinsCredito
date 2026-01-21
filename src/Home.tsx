@@ -1,407 +1,363 @@
 import React, { useState, useEffect } from 'react'
 import './Home.css'
 import { Link } from 'react-router-dom'
-//-------------Imporatação Nav-bar----------------
 import Navbar from './components/navbar.tsx'
 
-//-------------Importação de imamgens-------------
-
-import Insta from './assets/instaLogo.png'
-import Whats from './assets/whatsLogo.png'
 import pic1 from './assets/pic1.png'
 import pic2 from './assets/pic2.jpg'
-import pic3 from './assets/pic3.jpg'
+import pic3 from './assets/pic3.png'
 import pic4 from './assets/fgts.png'
 import transparencia from './assets/Transparência.png'
 import atendimento from './assets/atendimento.png'
 import sonhos from './assets/sonhos.png'
 import agilidade from './assets/agilidade.png'
 
-
-
-
 const Images = [
-  {
-    ImgSrc: pic1,
-    Title: "LinsCrédito",
-    text: `testando`
-  },
-  {
-    ImgSrc: pic2,
-    Title: ""
-  },
-  {
-    ImgSrc: pic3,
-    Title: ""
-  },
-  {
-    ImgSrc: pic4,
-    Title: ""
-  }
+  { ImgSrc: pic1, Title: "LinsCrédito", text: `Soluções financeiras ao seu alcance` },
+  { ImgSrc: pic2, Title: "Confiança", text: "Transparência em cada etapa" },
+  { ImgSrc: pic3, Title: "Rapidez", text: "Crédito sem burocracia" },
+  { ImgSrc: pic4, Title: "FGTS", text: "Antecipe seus sonhos agora" }
 ];
 
 export default function Home() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [cpf, setCpf] = useState("");
   const [valor, setValor] = useState(0);
-  const [vezes, setVezes] = useState(0);
+  const [vezes, setVezes] = useState("");
   const [idade, setIdade] = useState(0);
   const [tipo, setTipo] = useState("")
+  const [beneficio, setBeneficio] = useState("");
+  const [simulador, setSimulador] = useState(0);
 
+  const simulacao = (beneficio:number, vezes:number ) => {
+    if ( vezes == 96) {
+      setSimulador( beneficio * 0.35 / 0.02370)
+    }else if (vezes == 48) {
+      setSimulador (beneficio * 0.35 / 0.03330)
+    } else if(vezes) {
+      setSimulador (beneficio * 0.35 / 0.0405)
+    }
+  }
+    
   // useEffect(() => {
   //   const intervalo = setInterval(() => {
   //     setCurrentIndex((prev) => (prev + 1) % Images.length);
-  //   }, 3000);
+  //   }, 5000);
   //   return () => clearInterval(intervalo);
   // }, []);
 
-  const handleCpf = (event) => {
-    setCpf(event.target.value);
-  };
-  const handleIdade = (event) => {
-    setIdade(event.target.value);
-  };
-  const handleValor = (event) => {
-    setValor(event.target.value);
-  };
-  const handleVezes = (event) => {
-    setVezes(event.target.value);
-  };
   const handleRightSide = () => {
     setCurrentIndex((prevIndex) => (prevIndex + 1) % Images.length)
   };
   const handleLeftSide = () => {
     setCurrentIndex((prevIndex) => (prevIndex - 1 + Images.length) % Images.length)
   };
-  const handleChange = (event) => {
-    setTipo(event?.target.value)
-  };
-
-  // Variaveis para guardar número e mensagem de texto
-  
+ 
   const number = "27998236211";
-  const mensagem = `Olá, sou portador do CPF: ${cpf} tenho ${idade} anos e 
-  desejo realizar um empréstimo ${tipo} em ${vezes}x`;
+  const mensagem = `Olá LinsCrédito! \nSou portador do CPF: *${cpf}*, tenho *${idade}* anos.\nDesejo realizar um empréstimo do tipo: *${tipo}* (Benefício: ${beneficio || 'N/A'})\nParcelamento desejado: *${vezes}* ${simulador.toFixed(2)}`;
   const linkWhatsapp = `https://wa.me/${number}?text=${encodeURIComponent(mensagem)}`;
 
-
-
   return (
-
-    <div className='body bg-[#034C8C] m-0  overflow-hidden'>
-      <div >
+    <div className='font-sans bg-slate-50 overflow-x-hidden'>
+      
+      <div className='flex w-full top-0 z-50 shadow-md fixed'>
         <Navbar />
       </div>
-      <div className='mother flex flex-col '>
-        <div className=''>
 
-          {/* Inicio do Slider de fotos */}
-          <div className='w-full h-[600px] max-sm:h-screen bg-white relative group overflow-hidden max-sm:h-80'>
-
-
+      <div id='inicio' className='relative w-full h-[600px] max-md:h-[550px] bg-gray-900 overflow-hidden group'>
+        <div
+          className='w-full h-full flex transition-transform duration-700 ease-in-out'
+          style={{ transform: `translateX(-${currentIndex * 100}%)` }}
+        >
+          {Images.map((item, index) => (
             <div
-              className='w-full h-full flex transition-transform duration-500 ease-out'
-              style={{ transform: `translateX(-${currentIndex * 100}%)` }}
+              key={index}
+              className='w-full h-full flex-shrink-0 bg-cover bg-center relative '
+              style={{ backgroundImage: `url(${item.ImgSrc})`,
+                      backgroundPosition: 'top',}}
             >
-
-              {Images.map((item, index) => (
-                <div
-                  key={index}
-                  className='w-full h-full flex-shrink-0 bg-center'
-                  style={{
-                    backgroundImage: `url(${item.ImgSrc})`,
-                    backgroundSize: '100% 100%'
-                  }}
-                ><div className='flex w-full h-full justify-end  items-center left-10 text-white '>
-                    <div className='flex flex-col bg-black/50 h-full w-full items-center justify-center'>
-                      <h1 className='font-extrabold text-6xl border-b-4'>{item.Title}</h1>
-                      <p className='flex justify-center items-center p-4 '>{item.text}</p>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-
-
-            <button
-              className='bg-transparent  text-white absolute top-1/2 right-5 -translate-y-1/2  
-              rounded-full p-2 text-4xl hover:cursor-pointer hover:bg-black/50 transition duration-150 z-10
-              max-sm:scale-50 max-sm:right-0'
-              onClick={handleRightSide}
-            >
-              <i className="ri-arrow-right-circle-fill"></i>
-            </button>
-
-
-            <button
-              className='bg-transparent text-white absolute top-1/2 left-5 -translate-y-1/2 
-              rounded-full p-2 text-4xl hover:cursor-pointer hover:bg-black/50 transition duration-150 z-10
-              max-sm:scale-50 max-sm:left-0'
-              onClick={handleLeftSide}
-            >
-              <i className="ri-arrow-left-circle-fill"></i>
-            </button>
-          </div>
-        </div>
-        {/* Fim do Slide de fotos */}
-
-        {/* Produtos da Empresa */}
-        <div className='flex flex-col w-full h-auto max-sm:h-325 justify-center items-center gap-1 bg-[#042C4D] '>
-
-          <div className='flex flex-row gap-10 m-30 max-sm:scale-60 max-sm:flex-col'>
-
-            <div className="relative w-120 h-150 bg-blue-900 rounded-2xl text-center pt-16 pb-8 px-6 shadow-xl mt-10 text-white ">
-              <div className="absolute -top-10 left-1/2 -translate-x-1/2 w-20 h-20 bg-green-600 rounded-full flex flex-col items-center justify-center 
-             border-gray-100 shadow-sm text-white text-5xl">
-                <i class="ri-cash-line "></i>
-              </div>
-              <p>O FGTS (Fundo de Garantia do Tempo de Serviço) não é apenas um direito trabalhista;
-                é o seu patrimônio crescendo mês a mês. Depositado pela empresa, esse valor funciona
-                como uma reserva de segurança para momentos importantes — como a compra da casa própria,
-                uma aposentadoria mais tranquila ou aquele imprevisto que ninguém planeja.
-                Mas aqui está o segredo: você não precisa esperar anos para ver esse dinheiro.Hoje,
-                existem formas inteligentes de antecipar esses valores e realizar seus projetos agora.
-                Quer descobrir quanto você tem disponível e como usar isso a seu favor? Vamos conversar!</p>
-
-               <button type='button' className='rounded-xl bg-[#058605] text-white cursor-pointer h-15 w-100 
-                transition duration-500 hover:bg-[#035703] shadow-xl/15 flex bottom-10 left-1/2 -translate-x-1/2 absolute items-center justify-center ' >
-                  Simular
-                </button>
-
-            </div>
-            <div className="relative w-120 h-150 bg-blue-900 rounded-2xl text-center pt-16 pb-8 px-6 shadow-xl mt-10 text-white ">
-              <div className="absolute -top-10 left-1/2 -translate-x-1/2 w-20 h-20 bg-green-600 rounded-full flex items-center justify-center 
-             border-gray-100 shadow-sm text-white text-5xl">
-                <i class="ri-shake-hands-line"></i>
-              </div>
-              <div className=''>
-                <p>O Empréstimo Consignado é a solução ideal para quem busca as taxas de juros mais baixas do mercado e
-                  total conveniência. Por ser descontado diretamente na folha de pagamento, ele oferece uma segurança maior
-                  tanto para quem empresta quanto para quem recebe, garantindo prazos mais longos e parcelas que cabem no
-                  seu bolso sem sobressaltos. É a oportunidade perfeita para organizar sua vida financeira, quitar dívidas
-                  caras ou realizar aquele projeto antigo com a tranquilidade de saber exatamente quanto vai pagar.
-                  Sem burocracia excessiva e com liberação rápida, o crédito consignado transforma sua estabilidade
-                  profissional em uma ferramenta para conquistar seus objetivos agora. Quer saber qual o limite disponível
-                  para você? Vamos conversar!</p>
-
-                <button type='button' className='rounded-xl bg-[#058605] text-white cursor-pointer h-15 w-100 
-                transition duration-500 hover:bg-[#035703] shadow-xl/15 flex bottom-10 left-1/2 -translate-x-1/2 absolute items-center justify-center ' >
-                  Simular
-                </button>
-
-              </div>
-
-
-            </div>
-            <div className="relative w-120 h-150 bg-blue-900 rounded-2xl text-center pt-16 pb-8 px-6 shadow-xl mt-10 text-white ">
-              <div className="absolute -top-10 left-1/2 -translate-x-1/2 w-20 h-20 bg-green-600 rounded-full flex flex-col items-center justify-center 
-             border-gray-100 shadow-sm text-white text-5xl">
-                <i class="ri-wallet-3-line"></i>
-              </div>
-              <p>O Empréstimo Pessoal é a alternativa rápida e flexível para quando a vida exige agilidade. Diferente de outras
-                modalidades, ele não requer garantias complexas ou uma finalidade específica: o crédito é seu para usar como
-                preferir, seja para uma emergência, uma viagem inesperada ou para aproveitar uma oportunidade única de negócio.
-                Com processos de aprovação cada vez mais dinâmicos e digitais, você ganha o fôlego financeiro necessário com a
-                liberdade de escolher o plano de parcelamento que melhor se adapta ao seu planejamento mensal. É o dinheiro na
-                mão com a transparência que você merece para retomar o controle das suas finanças ou dar o próximo passo nos
-                seus planos. Precisa de crédito rápido e sem complicações? Vamos conversar!</p>
-             
-                
-                <button type='button' className='rounded-xl bg-[#058605] text-white cursor-pointer h-15 w-100 
-                transition duration-500 hover:bg-[#035703] shadow-xl/15 flex bottom-10 left-1/2 -translate-x-1/2 absolute items-center justify-center ' >
-                  Simular
-                </button>
-              
-            </div>
-            
-          </div>
-        
-        </div>
-        <div className='flex flex-row justify-center w-auto h-150 max-sm:h-325 max-sm:gap-10 items-center gap-10 ml-45 mr-45 max-sm:flex-col max-md:flex-col max-lg:flex-col max-sm:scale-80 max-sm:gap-0 mb-10'>
-            <div className='produtos items-center  '>
-              <h1>Transparencia Total</h1>
-              <img src={transparencia} alt="" className='h-30 m-5' />
-              <p>Com a LinsCrédito não existem letras miúdas. Explicamos cada detalhe do seu contrato de forma simples e clara, 
-                para que você tome sua decisão com total tranquilidade e segurança.</p>
-            </div>
-            <div className='produtos items-center '>
-              <h1>Atendimento Humanizado</h1>
-              <img src={atendimento} alt="" className='h-30 m-5' />
-              <p>Mais do que números, lidamos com histórias de vida. Nosso atendimento é feito de pessoas para pessoas,
-                 com a paciência, o respeito e a atenção que você merece.</p>
-
-            </div>
-            <div className='produtos items-center '>
-              <h1>Compromisso com Sonhos</h1>
-              <img src={sonhos} alt="" className='h-30 m-5' />
-              <p>O crédito é apenas uma ferramenta; o nosso verdadeiro objetivo é ver você realizando aquela viagem, 
-                reformando a casa ou ajudando a família. O seu sonho é a nossa meta</p>
-            </div>
-            <div className='produtos '>
-              <h1>Agilidade Desburocratizada</h1>
-              <img src={agilidade} alt="" className='h-30 m-5' />
-              <p>Sabemos que quem tem planos tem pressa. Utilizamos tecnologia para tornar a liberação do seu crédito 
-              rápida, sem filas e sem papelada desnecessária</p>
-
-            </div>
-          </div>
-        
-
-        <div className=''>
-          <div className='flex flex-col justify-center items-center h-auto w-full gap-20 max-sm:h-165```````````````````````````````````````````````` max-sm:scale-100 bg-[#042C4D] p-20'>
-
-            <div className="flex flex-col bg-white w-auto h-auto rounded-2xl shadow-lg p-8 items-center gap-10 max-sm:scale-70"> 
-              <div>
-                <h1 className='font-bold text-5xl text-[#042C4D]'>Simulação </h1>
-              </div>
-              <div className=' flex flex-col gap-3'>
-                <label className='titulos'
-                >CPF</label>
-                <input className='box-input' id="cpf" type="text"
-                  onChange={handleCpf} />
-
-                <label className='titulos'>Idade</label>
-                <input className='box-input' type="number"
-                onChange={handleIdade} />
-
-                <label className='titulos'>Quantas vezes?</label>
-                <div className='flex flex-row gap-5 items-center '>
-                  <input className='w-80 h-10 border border-gray-300 rounded-md' type="number" 
-                  onChange={handleVezes}/>
-                  <div className='flex w-15 h-6 bg-[#C0C0C0] rounded-md text-[#4F4F4F] items-center justify-center text-xs'>Max 96x </div>
-                </div>
-
-                <label className='titulos'>Tipo de Empréstimo</label>
-
-                <div className='flex flex-col gap-5 items-center'>
-                  <div className='flex flex-row gap-10 '>
-                    <div className="input-container ">
-                      <input
-                        id="fgts"
-                        type="radio"
-                        className="tipo peer"
-                        value="FGTS"
-                        name="tipo"
-                        onChange ={handleChange}
-                      />
-
-                      <label htmlFor="fgts">FGTS</label>
-
-                    </div>
-                    <div className="input-container">
-                      <input
-                        id="consignado"
-                        type="radio"
-                        className="tipo peer"
-                        value="Consignado"
-                        name="tipo"
-                        onChange ={handleChange}
-                      />
-
-                      <label htmlFor="consignado">Consignado</label>
-
-                    </div>
-                    <div className="input-container">
-                      <input
-                        id="pessoal"
-                        type="radio"
-                        className="tipo peer"
-                        value="Pessoal"
-                        name="tipo"
-                        onChange ={handleChange}
-                      />
-
-                      <label htmlFor="pessoal">Pessoal</label>
-
-
-                    </div>
-                  </div>
-
-                </div>
-                <label className='titulos'>Tipo do Beneficio</label>
-                <div className='flex flex-row gap-10 items-center justify-center'>
-                  <div className="input-container ">
-                    <input type="radio" className='tipo peer' value='21' name='beneficio' />
-
-                    <label htmlFor="pessoal">21</label>
-
-                  </div>
-                  <div className="input-container ">
-                    <input type="radio" className='tipo peer' value='41' name='beneficio' />
-
-                    <label htmlFor="pessoal">41</label>
-
-                  </div>
-                  <div className="input-container">
-                    <input type="radio" className='tipo peer' value='32' name='beneficio' />
-
-                    <label htmlFor="pessoal">32</label>
-
-                  </div>
-
-
-                </div>
-                <a  className='rounded-xl bg-[#058605] text-white cursor-pointer h-15 w-100 
-                transition duration-500 hover:bg-[#035703] shadow-xl/15 flex items-center justify-center'
-                href= {linkWhatsapp}>
-                  Simular</a>
-
-
+              <div className='absolute inset-0 bg-gradient-to-t from-[#042C4D] via-black/40 to-transparent flex flex-col justify-end pb-20 items-center text-white text-center px-4'>
+                <h1 className='font-extrabold text-5xl md:text-7xl drop-shadow-lg mb-2 transform transition-all duration-700 translate-y-0 opacity-100'>
+                  {item.Title}
+                </h1>
+                <p className='text-lg my-2 md:text-2xl font-light drop-shadow-md bg-green-600/80 px-4 py-1 rounded-full'>
+                  {item.text}
+                </p>
               </div>
             </div>
-
-          </div>
-          {/* Rodapé do site (Contato) */}
-          <div className='contato text-white flex flex-col items-center justify-center '>
-            <div className='flex flex-col justify-start h-full w-screen    max-sm:text-2 max-sm:text-[5px] '>
-
-              <div className='flex flex-row mb-0px items-center justify-start h-full w-full p-10 '>
-
-                
-
-                <div className='flex flex-col  w-full h-full items-start justify-start '>
-                  <ul className='flex flex-row gap-4 '>
-                    <li className='text-4xl'><a href=""><i class="ri-instagram-line"></i></a></li>
-                    <li className='text-4xl'>
-                      <a href= {linkWhatsapp}>
-                      <i class="ri-whatsapp-line"></i></a></li>
-                  </ul>
-                  <ul>
-
-                    <li>Contato</li>
-                    <li>Sobre Nós</li>
-                    <li>Politica de privacidade</li>
-                  </ul>
-                </div>
-                <div className='flex flex-col justify-end items-center h-full w-full mb-0px  bottom-0 left-0
-                  p-4 text-white text-xs
-                  '>
-                  <p>Cpf: {cpf}</p>
-                  <p>Idade: {idade}</p>
-                  <p>Vezes: {vezes}</p>
-                  <p>Tipo: {tipo}</p>
-                  <p className=''>© 2025 LinsCrédito - Todos os direitos reservados.</p>
-
-                </div>
-                <div className='flex-col items-end  bottom-0 h-full w-full '>
-                  <h1 className='text-white text-4xl font-extrabold mb-2'>Fale Conosco</h1>
-                  <p className='flex mb-10'>Nos envie uma mensagem em nosso número de telefone, entraremos em contato o mais rápido possível!</p>
-                  <p className='text-white text-4xl font-extrabold mb-2'>(27)99823-6211</p>
-                </div>
-
-              </div>
-
-            </div>
-
-
-
-
-          </div>
-
+          ))}
         </div>
 
+        <button
+          onClick={handleLeftSide}
+          className='absolute left-4 top-1/2 -translate-y-1/2 bg-white/10 hover:cursor-pointer hover:bg-white/30 backdrop-blur-sm text-white p-3 rounded-full transition-all hover:scale-110 z-10'
+        >
+          <i className="ri-arrow-left-s-line text-3xl"></i>
+        </button>
+        <button
+          onClick={handleRightSide}
+          className='absolute right-4 top-1/2 -translate-y-1/2 bg-white/10  hover:cursor-pointer hover:bg-white/30 backdrop-blur-sm text-white p-3 rounded-full transition-all hover:scale-110 z-10'
+        >
+          <i className="ri-arrow-right-s-line text-3xl"></i>
+        </button>
+        <div id='produtos'></div>
       </div>
 
-    </div >
+      <div  className='py-20 px-5 bg-gradient-to-b from-[#042C4D] to-[#02182b] text-white'>
+        <div className='max-w-7xl mx-auto'>
+          <div className='text-center mb-16'>
+            <h2 className='text-4xl font-bold mb-4'>Nossos Produtos</h2>
+            <div className='w-24 h-1 bg-green-500 mx-auto rounded-full'></div>
+          </div>
+
+          <div className='grid grid-cols- md:grid-cols-3 gap-15 lg:gap-14'>
+            <div className='group relative bg-[#063b66] rounded-3xl p-8 pt-12 hover:-translate-y-2 transition-all duration-300 shadow-xl hover:shadow-green-500/20 border border-white/5'>
+              <div className='absolute -top-10 left-1/2 -translate-x-1/2 w-20 h-20 bg-green-600 rounded-full flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform'>
+                <i className="ri-cash-line text-4xl text-white"></i>
+              </div>
+              <h3 className='text-2xl font-bold text-center mb-4 mt-4'>Antecipação FGTS</h3>
+              <p className='text-gray-300 text-center mb-8 text-sm leading-relaxed'>
+                O seu patrimônio crescendo mês a mês. Não espere anos para ver esse dinheiro. 
+                Existem formas inteligentes de antecipar esses valores e realizar seus projetos agora.
+              </p>
+              <button className='w-full py-3 rounded-xl bg-green-600 font-bold hover:bg-green-500 hover:cursor-pointer transition-colors shadow-lg'>
+                Simular Agora
+              </button>
+            </div>
+
+            <div className='group relative bg-[#063b66] rounded-3xl p-8 pt-12 hover:-translate-y-2 transition-all duration-300 shadow-xl hover:shadow-green-500/20 border border-white/5'>
+              <div className='absolute -top-10 left-1/2 -translate-x-1/2 w-20 h-20 bg-green-600 rounded-full flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform'>
+                <i className="ri-shake-hands-line text-4xl text-white"></i>
+              </div>
+              <h3 className='text-2xl font-bold text-center mb-4 mt-4'>Empréstimo Consignado</h3>
+              <p className='text-gray-300 text-center mb-8 text-sm leading-relaxed'>
+                Taxas de juros mais baixas do mercado e total conveniência. 
+                Descontado diretamente na folha, garantindo prazos mais longos e parcelas que cabem no bolso.
+              </p>
+              <button className='w-full py-3 rounded-xl hover:cursor-pointer bg-green-600 font-bold hover:bg-green-500 transition-colors shadow-lg'>
+                Simular Agora
+              </button>
+            </div>
+
+            <div className='group relative bg-[#063b66] rounded-3xl p-8 pt-12 hover:-translate-y-2 transition-all duration-300 shadow-xl hover:shadow-green-500/20 border border-white/5'>
+              <div className='absolute -top-10 left-1/2 -translate-x-1/2 w-20 h-20 bg-green-600 rounded-full flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform'>
+                <i className="ri-wallet-3-line text-4xl text-white"></i>
+              </div>
+              <h3 className='text-2xl font-bold text-center mb-4 mt-4'>Empréstimo Pessoal</h3>
+              <p className='text-gray-300 text-center mb-8 text-sm leading-relaxed'>
+                Alternativa rápida e flexível. Sem garantias complexas: o crédito é seu para usar como preferir. 
+                Processos de aprovação dinâmicos e digitais.
+              </p>
+              <button className='w-full py-3 rounded-xl bg-green-600 font-bold hover:bg-green-500 hover:cursor-pointer transition-colors shadow-lg'>
+                Simular Agora
+              </button>
+            </div>
+          </div>
+        </div>
+        <div id='sobre' ></div>
+      </div>
+
+      <div  className='py-10 px-5 bg-[#02182b] h-250 md:h-auto'>
+        <div className='max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 text-center h-120 items-center justify-center'>
+          
+          <div className='flex flex-col items-center group '>
+            <div className='bg-green-600 p-6 rounded-full mb-4 group-hover:bg-green-800  hover:scale-120 transition '>
+                <img src={transparencia} alt="Transparência" className='h-16 w-16 object-contain' />
+            </div>
+            <h3 className='text-xl font-bold text-[#FFFFFF] mb-2'>Transparência Total</h3>
+            <p className='text-gray-400 text-sm'>Sem letras miúdas. Explicamos cada detalhe para sua total segurança.</p>
+          </div>
+
+          <div className='flex flex-col items-center group'>
+            <div className='bg-green-600 p-6 rounded-full mb-4 group-hover:bg-green-800  hover:scale-120 transition '>
+                <img src={atendimento} alt="Atendimento" className='h-16 w-16 object-contain' />
+            </div>
+            <h3 className='text-xl font-bold text-[#FFFFFF] mb-2'>Atendimento Humanizado</h3>
+            <p className='text-gray-400 text-sm'>De pessoas para pessoas. Com a paciência e respeito que você merece.</p>
+          </div>
+
+          <div className='flex flex-col items-center group'>
+            <div className='bg-green-600 p-6 rounded-full mb-4 group-hover:bg-green-800  hover:scale-120 transition '>
+                <img src={sonhos} alt="Sonhos" className='h-16 w-16 object-contain' />
+            </div>
+            <h3 className='text-xl font-bold text-[#FFFFFF] mb-2'>Foco em Sonhos</h3>
+            <p className='text-gray-400 text-sm'>Nosso objetivo é ver você realizando seus planos e ajudando sua família.</p>
+          </div>
+
+          <div className='flex flex-col items-center group'>
+            <div className='bg-green-600 p-6 rounded-full mb-4 group-hover:bg-green-800  hover:scale-120 transition '>
+                <img src={agilidade} alt="Agilidade" className='h-16 w-16 object-contain' />
+            </div>
+            <h3 className='text-xl font-bold text-[#FFFFFF] mb-2'>Agilidade</h3>
+            <p className='text-gray-400 text-sm'>Tecnologia para liberação rápida, sem filas e sem papelada desnecessária.</p>
+          </div>
+
+        </div>
+      </div>
+
+      <div id='simulacao' className='py-20 px-5 bg-gradient-to-b from-[#02182b] to-[#02182b] relative overflow-hidden'>
+        <div className='relative max-w-4xl mx-auto bg-white/95 backdrop-blur-xl rounded-3xl shadow-2xl overflow-hidden flex flex-col md:flex-row'>
+          
+          <div className='hidden md:flex md:w-1/3 bg-gradient-to-br from-green-600 to-green-800 p-8 flex-col justify-between text-white'>
+             <div>
+                <h3 className='text-3xl font-bold mb-4'>Vamos Simular?</h3>
+                <p className='opacity-90'>Preencha seus dados ao lado e receba uma proposta personalizada no seu WhatsApp.</p>
+             </div>
+             <div className='text-8xl opacity-20 text-center'>
+                <i className="ri-whatsapp-line"></i>
+             </div>
+          </div>
+
+          <div className='fullw- md:w-2/3 p-8 md:p-12'>
+            <h2 className='text-3xl font-bold text-[#042C4D] mb-8 text-center md:text-left'>Preencha seus dados</h2>
+            
+            <div className='grid grid-cols-1 md:grid-cols-2 gap-6'>
+                <div className='flex flex-col gap-2'>
+                    <label className='font-semibold text-gray-700 text-sm'
+                    >CPF</label>
+                    <input 
+                        className='w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent outline-none transition-all'
+                        type="text" 
+                        placeholder="000.000.000-00"
+                        maxLength={14}
+                        onChange={(e) => setCpf(e.target.value)}
+    
+                    />
+                </div>
+                <div className='flex flex-col gap-2'>
+                    <label className='font-semibold text-gray-700 text-sm'>Idade</label>
+                    <input 
+                        className='w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent outline-none transition-all'
+                        type="number"
+                        placeholder="Anos"
+                        onChange={(e) => setIdade(e.target.value)} 
+                    />
+                </div>
+                 
+            </div>
+
+             <div className='flex flex-col gap-2 py-3'>
+                    <label className='font-semibold text-gray-700 text-sm'>Valor do Beneficio</label>
+                    <input 
+                        className='w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent outline-none transition-all'
+                        type="number"
+                        placeholder="Ex : 1620,00"
+                        onChange={(e) => setBeneficio(e.target.value)} 
+                    />
+                </div>
+
+            <div className='flex flex-col gap-2 mt-6'>
+                <label className='font-semibold text-gray-700 text-sm'>Quantas parcelas?</label>
+                <div className='flex gap-2 items-center justify-center'>
+                   {["36x", "48x", "96x"].map((teste) => (
+                    <button 
+                    key={teste}
+                    className={`border-1 rounded-full w-12 h-12 items-center flex justify-center font-bold hover:cursor-pointer
+                    ${vezes === teste 
+                    ? 'bg-[#042C4D] text-white border-[#042C4D] scale-110' 
+                    : 'bg-gray-50 text-gray-500 border-gray-200 hover:border-blue-300' }
+                      `}
+
+                      onClick={() =>setVezes(teste)}>
+
+                     {teste}
+                    </button>))}
+                </div>
+            </div>
+
+            <div className='mt-6'>
+                <label className='font-semibold text-gray-700 text-sm mb-2 block'>Tipo de Empréstimo</label>
+                <div className='grid grid-cols-3 gap-3'>
+                    {['FGTS', 'Consignado', 'Pessoal'].map((option) => (
+                        <button
+                            key={option}
+                            onClick={() => setTipo(option)}
+                            className={`py-2 px-1 rounded-lg border text-sm font-medium transition-all text-[11px] hover:cursor-pointer ${
+                                tipo === option 
+                                ? 'bg-green-600 text-white border-green-600 shadow-md' 
+                                : 'bg-white text-gray-500 border-gray-200 hover:border-green-400'
+                            }`}
+                        >
+                            {option}
+                        </button>
+                    ))}
+                </div>
+            </div>
+
+            <div className='mt-6'>
+                <label className='font-semibold text-gray-700 text-sm mb-2 block'>Tipo do Benefício</label>
+                <div className='flex gap-4 justify-center'>
+                    {['21', '41', '32'].map((b) => (
+                        <button
+                            key={b}
+                            onClick={() => setBeneficio(b)}
+                            className={`w-12 h-12 rounded-full border flex items-center justify-center font-bold transition-all hover:cursor-pointer ${
+                                beneficio === b 
+                                ? 'bg-[#042C4D] text-white border-[#042C4D] scale-110' 
+                                : 'bg-gray-50 text-gray-500 border-gray-200 hover:border-blue-300'
+                            }`}
+                        >
+                            {b}
+                        </button>
+                    ))}
+                </div>
+            </div>
+
+            <a 
+                href={linkWhatsapp}
+                target="_blank"
+                rel="noreferrer"
+                className='mt-8 w-full bg-green-600 text-white font-bold py-4 rounded-xl flex items-center justify-center 
+                gap-2 hover:bg-green-700 transition-colors shadow-lg hover:shadow-green-500/30'
+                onClick={() => simulacao(beneficio, vezes)}
+            >
+                <i className="ri-whatsapp-line text-xl"></i>
+                Simular no WhatsApp
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <footer id ='contato' className='bg-[#02182b] text-white pt-16 pb-8 border-t border-white/10'>
+        <div className='max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-12'>
+            
+            <div className='flex flex-col items-start'>
+                <h2 className='text-3xl font-extrabold mb-4 tracking-tighter'>Lins<span className='text-green-500'>Crédito</span></h2>
+                <div className='flex gap-4 mt-2'>
+                    <a href="#" className='w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-green-600 transition-colors'>
+                        <i className="ri-instagram-line text-xl"></i>
+                    </a>
+                    <a href="https://api.whatsapp.com/send/?phone=27998236211" className='w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-green-600 transition-colors'>
+                        <i className="ri-whatsapp-line text-xl"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div>
+                <h3 className='text-lg font-bold mb-4 border-b border-white/20 pb-2 inline-block'>Navegação</h3>
+                <ul className='space-y-2 text-gray-400'>
+                    <li><a href="#inicio" className='hover:text-green-400 transition-colors'>Início</a></li>
+                    <li><a href="#produtos" className='hover:text-green-400 transition-colors'>Produtos</a></li>
+                    <li><a href="#sobre" className='hover:text-green-400 transition-colors'>Sobre</a></li>
+                    <li><a href="#simulacao" className='hover:text-green-400 transition-colors'>Simulação</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h3 className='text-lg font-bold mb-4 border-b border-white/20 pb-2 inline-block'>Fale Conosco</h3>
+                <p className='text-gray-400 mb-4 text-sm'>Envie uma mensagem em nosso número, entraremos em contato o mais rápido possível!</p>
+                <div className='flex items-center gap-3 text-green-400 font-bold text-2xl'>
+                    <i className="ri-phone-line"></i>
+                    (27) 99823-6211
+                </div>
+            </div>
+        </div>
+
+        <div className='mt-16 text-center text-gray-600 text-sm border-t border-white/5 pt-8'>
+            <p>&copy; 2025 LinsCrédito - Todos os direitos reservados.</p>
+            
+        </div>
+      </footer>
+    </div>
   )
 }
